@@ -1,8 +1,8 @@
-/* src/App.css */
 .App {
   font-family: Arial, sans-serif;
   padding: 2rem;
   background-color: #f9f9f9;
+  margin: 0 auto;         /* center horizontally */
 }
 
 h1 {
@@ -10,18 +10,37 @@ h1 {
   color: #333;
 }
 
+/* Move filters above table, add margin-bottom for spacing */
+.filters {
+  margin-bottom: 1.5rem;
+}
+
+/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 2rem;
+  margin-top: 0; /* remove top margin because filters are above */
   background-color: white;
+  table-layout: fixed; /* fix columns widths */
 }
 
 th, td {
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #ccc;
+  white-space: nowrap; /* no wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+/* Set fixed widths for columns */
+th:nth-child(1), td:nth-child(1) { width: 90px; }  /* Author */
+th:nth-child(2), td:nth-child(2) { width: 110px; } /* Category */
+th:nth-child(3), td:nth-child(3) { width: 110px; } /* Subcategory */
+th:nth-child(4), td:nth-child(4) { width: 100px; } /* Product Size */
+th:nth-child(5), td:nth-child(5) { width: 100px; } /* Product ID */
+th:nth-child(6), td:nth-child(6) { width: auto; }  /* Name - flexible */
+th:nth-child(7), td:nth-child(7) { width: 120px; } /* Notes */
 
 th {
   background-color: #eaeaea;
