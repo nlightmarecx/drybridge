@@ -1,6 +1,17 @@
 // src/App.js
 import React, { useState, useMemo } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import WineHead1 from "./product pages/wine heads/WineHead0001";
+import WineHead2 from "./product pages/wine heads/WineHead0002";
+import WineHead3 from "./product pages/wine heads/WineHead0003";
+import WineHead4 from "./product pages/wine heads/WineHead0004";
+import WineHead5 from "./product pages/wine heads/WineHead0005";
+import WineHead6 from "./product pages/wine heads/WineHead0006";
+import WineHead7 from "./product pages/wine heads/WineHead0007";
+import WineHead8 from "./product pages/wine heads/WineHead0008";
+import WineHeadGvinovKakhuro from "./product pages/wine heads/WineHead-GvinovKakhuro";
 
   const rawProducts = [
     { author: "Luka", category: "Chess", subcategory: "Traditional", productSize: "69mm", productId: "LUI-202507-CH-0001", name: "Trad Epoxy Chess", notes: "50 GEL" },
@@ -13,11 +24,19 @@ import "./App.css";
     { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Small", productId: "LIA-202507-WF-0006", name: "Giraffe", notes: "30 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Medium", productId: "LIA-202507-WF-0007", name: "Giraffe", notes: "40 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Big", productId: "LIA-202507-WF-0008", name: "Giraffe", notes: "50 GEL" },
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0001", name: "Wine Head 0001", notes: "25 GEL", route: "/winehead1" },
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0002", name: "Wine Head 0002", notes: "25 GEL", route: "/winehead2"},
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0003", name: "Wine Head 0003", notes: "25 GEL", route: "/winehead3" },
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0004", name: "Wine Head 0004", notes: "25 GEL", route: "/winehead4"},
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0005", name: "Wine Head 0005", notes: "25 GEL", route: "/winehead5" },
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0006", name: "Wine Head 0006", notes: "25 GEL", route: "/winehead6"},
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0007", name: "Wine Head 0007", notes: "25 GEL", route: "/winehead7" },
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0008", name: "Wine Head 0008", notes: "25 GEL", route: "/winehead8"},
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-T0001", name: "WH-Gvinov Kakhuro", notes: "25 GEL", route: "/wineHead-gvinovkakhuro"},
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0009", name: "Cheburashka", notes: "" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0010", name: "Winnie the Puh", notes: "" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0011", name: "Baba Yaga", notes: "150 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Big", productId: "LIA-202507-WF-00012", name: "Firosmani's Meezove", notes: "200 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Small", productId: "LIA-202507-WF-0013", name: "Wine Head", notes: "25 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0014", name: "Village Grandpha", notes: "100 - 120 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0015", name: "Witch Grandma", notes: "100 - 120 GEL" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0016", name: "Noble Grandma", notes: "150 GEL" },
@@ -87,6 +106,7 @@ const filteredProducts = useMemo(() => {
 
 
   return (
+    <Router>
   <div className="App">
     <h1>DryBridge Product Table</h1>
     {/* Filters above table */}
@@ -156,14 +176,33 @@ const filteredProducts = useMemo(() => {
             <td>{product.category}</td>
             <td>{product.subcategory}</td>
             <td>{product.productSize}</td>
-            <td><a href={`#/${product.productId.toLowerCase()}`}>{product.name}</a></td>
+            <td>
+              {product.route ? (
+                <Link to={product.route}>{product.name}</Link>
+              ) : (
+                product.name
+              )}
+            </td>
             <td>{product.productId}</td>
             <td>{product.notes}</td>
           </tr>
         ))}
       </tbody>
     </table>
+    <Routes>
+          <Route path="/winehead1" element={<WineHead1 />} />
+          <Route path="/winehead2" element={<WineHead2 />} />
+          <Route path="/winehead3" element={<WineHead3 />} />
+          <Route path="/winehead4" element={<WineHead4 />} />
+          <Route path="/winehead5" element={<WineHead5 />} />
+          <Route path="/winehead6" element={<WineHead6 />} />
+          <Route path="/winehead7" element={<WineHead7 />} />
+          <Route path="/winehead8" element={<WineHead8 />} />
+          <Route path="/winehead-gvinovkakhuro" element={<WineHeadGvinovKakhuro />} />
+          <Route path="*" element={<div>404 - Page Not Found</div>} />
+        </Routes>
   </div>
+  </Router>
 );
 
 }
