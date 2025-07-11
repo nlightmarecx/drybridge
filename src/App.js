@@ -2,37 +2,39 @@
 import React, { useState, useMemo } from "react";
 import "./App.css";
 
-function App() {
   const rawProducts = [
-    { author: "Lia", category: "Wool Felted", subcategory: "Mythical", productSize: "Medium", productId: "BABA01", name: "Baba Yaga", notes: "150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Big", productId: "FIRME01", name: "Firosmani Meezove Big", notes: "200 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Toys", productSize: "Small", productId: "WINHEAD01", name: "Wine head wool toy with Georgian man head on bottle", notes: "25 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Mythical", productSize: "Medium", productId: "GRANDPHA01", name: "Grandpha", notes: "100 - 120 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Mythical", productSize: "Medium", productId: "WHICHGMA01", name: "Which Grandma", notes: "100 - 120 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Mythical", productSize: "Medium", productId: "NOBLEGMA01", name: "Noble Grandma", notes: "150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Small", productId: "DONKEYS01", name: "Donkey Small", notes: "30 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Medium", productId: "DONKEYM01", name: "Donkey Medium", notes: "40 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Big", productId: "DONKEYB01", name: "Donkey Big", notes: "50 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Small", productId: "GIRRAFES01", name: "Giraffe Small", notes: "30 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Medium", productId: "GIRRAFEM01", name: "Giraffe Medium", notes: "40 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Big", productId: "GIRRAFEB01", name: "Giraffe Big", notes: "50 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Culture", productSize: "Varies", productId: "GEODANC01", name: "Georgia Folk Dancers: Woman and Man", notes: "80 GEL Each, both 150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Small", productId: "FIRSMEES01", name: "Firosmani Meezove Small", notes: "100 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "People", productSize: "Medium", productId: "KAHKETI01", name: "Kahketian guy", notes: "100 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Medium", productId: "FIRMETEV01", name: "Firosmani Metevze", notes: "100 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Big", productId: "FIRMETEVB01", name: "Firosmani Metevze Big", notes: "200 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "People", productSize: "Big", productId: "FRIDABIG01", name: "Frida Big", notes: "200 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Medium", productId: "FIRMDEER01", name: "Firosmani Deer Painting", notes: "150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Medium", productId: "FIRSMEEP01", name: "Firosmani Meezove Painting", notes: "150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Medium", productId: "FIRMETPA01", name: "Firosmani Metevze Painting", notes: "150 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Art", productSize: "Small", productId: "FIRMARGS01", name: "Firosmani Margarita Small", notes: "100 GEL" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Small", productId: "SMBIRD01", name: "Small Bird", notes: "x5" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Animals", productSize: "Small", productId: "SMBUNNY01", name: "Small Bunny", notes: "x7" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Characters", productSize: "Medium", productId: "CHEBUR01", name: "Cheburashka", notes: "" },
-    { author: "Lia", category: "Wool Felted", subcategory: "Characters", productSize: "Medium", productId: "WINPUH01", name: "Winnie the Puh", notes: "" },
-    { author: "Luka", category: "Chess", subcategory: "Epoxy Chess", productSize: "69mm", productId: "Chess01", name: "EpoxyChess", notes: "" },
-    { author: "Lia", category: "Souvenir", subcategory: "Magnet", productSize: "Small", productId: "WoodMagnet01", name: "Kakheli", notes: "" },
+    { author: "Luka", category: "Chess", subcategory: "Traditional", productSize: "69mm", productId: "LUI-202507-CH-0001", name: "Trad Epoxy Chess", notes: "50 GEL" },
+    { author: "Luka", category: "Chess", subcategory: "RPG", productSize: "69mm", productId: "LUI-202507-CH-0002", name: "RPG Epoxy Chess", notes: "50 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Small", productId: "LIA-202507-WF-0001", name: "Bird", notes: "20 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Small", productId: "LIA-202507-WF-0002", name: "Bunny", notes: "20 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Small", productId: "LIA-202507-WF-0003", name: "Donkey", notes: "30 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Medium", productId: "LIA-202507-WF-0004", name: "Donkey", notes: "40 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Big", productId: "LIA-202507-WF-0005", name: "Donkey", notes: "50 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Small", productId: "LIA-202507-WF-0006", name: "Giraffe", notes: "30 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Medium", productId: "LIA-202507-WF-0007", name: "Giraffe", notes: "40 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Animal", productSize: "Big", productId: "LIA-202507-WF-0008", name: "Giraffe", notes: "50 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0009", name: "Cheburashka", notes: "" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0010", name: "Winnie the Puh", notes: "" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0011", name: "Baba Yaga", notes: "150 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Big", productId: "LIA-202507-WF-00012", name: "Firosmani's Meezove", notes: "200 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Small", productId: "LIA-202507-WF-0013", name: "Wine Head", notes: "25 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0014", name: "Village Grandpha", notes: "100 - 120 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0015", name: "Witch Grandma", notes: "100 - 120 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0016", name: "Noble Grandma", notes: "150 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Varies", productId: "LIA-202507-WF-0017", name: "Georgia Dancers", notes: "160 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Small", productId: "LIA-202507-WF-0018", name: "Firosmani's Meezove", notes: "100 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0019", name: "Kahketian guy", notes: "100 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0020", name: "Firosmani's Metevze", notes: "100 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Big", productId: "LIA-202507-WF-0021", name: "Firosmani's Metevze", notes: "200 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Big", productId: "LIA-202507-WF-0022", name: "Frida Kahlo", notes: "200 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Small", productId: "LIA-202507-WF-0023", name: "Firosmani's Margarita", notes: "100 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Painting", productSize: "Medium", productId: "LIA-202507-WF-0024", name: "Firosmani's Deer", notes: "150 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Painting", productSize: "Medium", productId: "LIA-202507-WF-0025", name: "Firosmani's Meezove", notes: "150 GEL" },
+    { author: "Lia", category: "Wool Felted", subcategory: "Painting", productSize: "Medium", productId: "LIA-202507-WF-0026", name: "Firosmani's Metevze", notes: "150 GEL" },
+    { author: "Lia", category: "Magnet", subcategory: "Woodmagnet", productSize: "Small", productId: "LIA-202507-MN-0001", name: "Kakheli", notes: "5 GEL" },
   ];
+
+function App() {
 
   // Unique authors & categories for filters
   const allAuthors = [...new Set(rawProducts.map(p => p.author))];
@@ -44,14 +46,13 @@ function App() {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
 
-  const toggleSet = (setFn, value) => {
-    setFn(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(value)) newSet.delete(value);
-      else newSet.add(value);
-      return newSet;
-    });
-  };
+const toggleSet = (setFn, value) => {
+  setFn(prev => {
+    const next = new Set(prev);
+    next.has(value) ? next.delete(value) : next.add(value);
+    return next;
+  });
+};
 
 const filteredProducts = useMemo(() => {
   let filtered = rawProducts.filter(
@@ -60,8 +61,8 @@ const filteredProducts = useMemo(() => {
 
   if (sortConfig.key) {
     filtered.sort((a, b) => {
-      const aKey = a[sortConfig.key].toLowerCase();
-      const bKey = b[sortConfig.key].toLowerCase();
+      const aKey = (a[sortConfig.key] ?? "").toString().toLowerCase();
+      const bKey = (b[sortConfig.key] ?? "").toString().toLowerCase();
       if (aKey < bKey) return sortConfig.direction === "asc" ? -1 : 1;
       if (aKey > bKey) return sortConfig.direction === "asc" ? 1 : -1;
       return 0;
@@ -119,35 +120,44 @@ const filteredProducts = useMemo(() => {
     <table>
       <thead>
         <tr>
-          {/* your sortable headers here */}
-          <th
-            onClick={() => onSort("author")}
-            style={{ cursor: "pointer", userSelect: "none" }}
-          >
-            Author {sortConfig.key === "author" ? (sortConfig.direction === "asc" ? "⬇️" : "⬆️") : ""}
+          <th>#</th>
+          <th>
+            <button
+              onClick={() => onSort("author")}
+              style={{ cursor: "pointer", userSelect: "none" }}
+              className={`sortable-header ${sortConfig.key === "author" ? "active" : ""}`}
+              title="Click to sort by Author"
+            >
+              Author {sortConfig.key === "author" ? (sortConfig.direction === "asc" ? "⬇️" : "⬆️") : ""}
+            </button>
           </th>
-          <th
-            onClick={() => onSort("category")}
-            style={{ cursor: "pointer", userSelect: "none" }}
-          >
-            Category {sortConfig.key === "category" ? (sortConfig.direction === "asc" ? "⬇️" : "⬆️") : ""}
+          <th>
+            <button
+              onClick={() => onSort("category")}
+              style={{ cursor: "pointer", userSelect: "none" }}
+              className={`sortable-header ${sortConfig.key === "category" ? "active" : ""}`}
+              title="Click to sort by Category"
+            >
+              Category {sortConfig.key === "category" ? (sortConfig.direction === "asc" ? "⬇️" : "⬆️") : ""}
+            </button>
           </th>
           <th>Subcategory</th>
           <th>Product Size</th>
-          <th>Product ID</th>
           <th>Name</th>
+          <th>Product ID</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
-        {filteredProducts.map(product => (
+        {filteredProducts.map((product, index) => (
           <tr key={product.productId}>
+            <td>{index + 1}</td> 
             <td>{product.author}</td>
             <td>{product.category}</td>
             <td>{product.subcategory}</td>
             <td>{product.productSize}</td>
-            <td>{product.productId}</td>
             <td><a href={`#/${product.productId.toLowerCase()}`}>{product.name}</a></td>
+            <td>{product.productId}</td>
             <td>{product.notes}</td>
           </tr>
         ))}
