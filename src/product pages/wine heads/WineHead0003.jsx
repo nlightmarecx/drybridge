@@ -12,4 +12,4 @@ const WineHead3 = () => {
   return null; // or <p>Redirecting...</p>
 };
 
-export default WineHead3;
+export default React.memo(WineHead3);
