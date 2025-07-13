@@ -196,7 +196,7 @@ const WineHeadGvinovKakhuro = () => {
       <div className="memory-section">
         <h2>David's Voice Message</h2>
         <img
-          src="/wine-tour-memory.jpg"
+          src="./Product Covers/Wine Heads.jpg"
           alt="Memory from Georgia"
           className="memory-photo"
         />
@@ -205,7 +205,7 @@ const WineHeadGvinovKakhuro = () => {
           vineyards. The Kindzmarauli winery was our favorite stop!"
         </p>
         <audio controls className="voice-memo">
-          <source src="/voice-message.mp3" type="audio/mpeg" />
+          <source src="./Audio Files/song-lola-hunter.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
         <button className="upload-btn" onClick={handleAudioUpload}>
@@ -221,7 +221,7 @@ const WineHeadGvinovKakhuro = () => {
         </div>
         <div className="memory-content">
           <img
-            src="/wine-tour-photo.jpg"
+            src="./Memory Sharing Photos/upload-product-img.png"
             alt="Memory from Georgia"
             className="photo-message"
           />
