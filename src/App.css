@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
 h1 {
   text-align: center;
   color: #333;
