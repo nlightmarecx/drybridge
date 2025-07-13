@@ -1,8 +1,15 @@
 // src/pages/WineHead7.jsx
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const WineHead7 = () => {
-  return <h1>WineHead 7</h1>;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/winehead-gvinovkakhuro");
+  }, [navigate]);
+
+  return null; // or <p>Redirecting...</p>
 };
 
 export default WineHead7;

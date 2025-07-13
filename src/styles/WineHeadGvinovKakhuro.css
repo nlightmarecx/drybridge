@@ -1,0 +1,156 @@
+
+:root {
+    --primary: #8B0000;
+    --secondary: #F0E68C;
+    --text: #333333;
+    --light-bg: #f9f4e8;
+}
+
+.mobile-container {
+  max-width: 430px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+}
+
+.wine-head-page {
+    background-color: var(--light-bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.language-selector {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.language-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 5px;
+}
+.language-btn.active {
+    color: var(--primary);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary);
+}
+.product-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.product-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid var(--secondary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+h1 {
+    color: var(--primary);
+    margin: 15px 0 5px;
+    font-size: 1.5rem;
+}
+.product-meta {
+    color: #666;
+    font-style: italic;
+}
+.memory-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+h2 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+.memory-photo {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    object-fit: cover;
+    background-color: #f9f9f9; /* optional: shows behind letterboxing */
+}
+.voice-memo {
+    width: 100%;
+    margin: 15px 0;
+}
+.upload-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    width: fit-content;
+}
+.memory-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+.memory-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.memory-icon {
+    font-size: 1.5rem;
+}
+
+.photo-message {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.location-marker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+.location-icon {
+    font-size: 1rem;
+}
+
+.footer {
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
+    font-size: 0.85rem;
+}
