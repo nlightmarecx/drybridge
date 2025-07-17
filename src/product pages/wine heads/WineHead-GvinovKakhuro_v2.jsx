@@ -38,7 +38,7 @@ const handlePhotoUpload = (e) => {
         ))}
       </div>
 
-      <div className="product-display">
+      <div className="title-display">
         <div className="video-wrapper">
           <iframe
             width="560"
@@ -51,15 +51,15 @@ const handlePhotoUpload = (e) => {
           ></iframe>
         </div>
         <h1>David's Wine Companion</h1>
-        <p className="product-meta">Handmade wool felt cover • Georgia</p>
+        <p className="title-motto">Handmade wool felt cover • Georgia</p>
       </div>
 
-      <div className="memory-section">
+      <div className="audio-section">
         <h2>David's Voice Message</h2>
         <img
           src="./Product Covers/Wine Heads.jpg"
-          alt="Memory from Georgia"
-          className="memory-photo"
+          alt="Product Images - Bottles of Wine with the Wine Clothes"
+          className="product-photo"
         />
         <p>
           "This wine cover reminds me of our amazing tour through Kakheti's
@@ -69,22 +69,21 @@ const handlePhotoUpload = (e) => {
           <source src="./Audio Files/song-lola-hunter.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <button className="upload-btn" onClick={handleAudioUpload}>
+        <button className="audio-upload-btn" onClick={handleAudioUpload}>
           Upload New Audio
         </button>
       </div>
 
-      {/* Memory Photo Card */}
-      <div className="memory-card">
-        <div className="memory-header">
-          <div className="memory-icon">📸</div>
-          <h2>Memory Photo</h2>
+      {/* Memory Photo section */}
+      <div className="memory-section">
+        <div className="memory-section-header">
+          <h2>Upload Your Fav  Memory Photo!</h2>
         </div>
         <div className="memory-content">
           <img
             src={uploadedPhoto || "./Memory Sharing Photos/upload-product-img.png"}
             alt="User memory"
-            className="photo-message"
+            className="memory-photo"
           />
           <input
             type="file"
@@ -95,16 +94,15 @@ const handlePhotoUpload = (e) => {
           />
           <div className="location-marker">
             <span className="location-icon">📍</span>
-            <span>Kindzmarauli Winery, May 15, 2024</span>
+            <span>Tbilisi, Georgia. July 2025</span>
           </div>
         </div>
       </div>
 
 
       {/* Product Story Card */}
-      <div className="memory-card">
+      <div className="memory-section">
         <div className="memory-header">
-          <div className="memory-icon">🧵</div>
           <h2>The Story Behind This Piece</h2>
         </div>
         <div className="memory-content">
@@ -113,17 +111,12 @@ const handlePhotoUpload = (e) => {
             Georgian wool-felting techniques passed down through three generations.
             The patterns represent the Alazani Valley vineyards.
           </p>
-          <div className="location-marker">
-            <span className="location-icon">📍</span>
-            <span>Made in Telavi, Georgia</span>
-          </div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="footer">
-        <p>Tap any NFC-enabled phone to this tag to experience the memories</p>
-        <p>© 2024 Georgian Artisan Souvenirs</p>
+        <p>© 2025, Polypore Warriors</p>
       </div>
 
     </div>

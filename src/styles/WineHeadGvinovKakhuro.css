@@ -16,14 +16,14 @@
     background-color: var(--light-bg);
     color: var(--text);
     line-height: 1.6;
-    padding: 20px;
+    padding: 22px;
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 .language-selector {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 .language-btn {
     background: none;
@@ -38,10 +38,11 @@
     font-weight: bold;
     border-bottom: 2px solid var(--primary);
 }
-.product-display {
+.title-display {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
+/* ---------------- START OF Wine Headv2 ---------------- */
 .product-image {
     width: 200px;
     height: 200px;
@@ -64,19 +65,23 @@
     width: 100%;
     height: 100%;
 }
+
+/* ---------------- END OF Wine Headv2 ---------------- */
+
 h1 {
     color: var(--primary);
-    margin: 15px 0 5px;
+    margin: -5px 0 -15px;
     font-size: 1.5rem;
 }
-.product-meta {
+.title-motto {
     color: #666;
-    font-style: italic;
+    padding: 0 20px 0 20px;
+    line-height: 1.2;
 }
-.memory-section {
+.audio-section {
     background: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     margin-bottom: 20px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
@@ -85,19 +90,18 @@ h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
-.memory-photo {
+.product-photo {
     width: 100%;
     border-radius: 8px;
-    margin-bottom: 15px;
     max-height: 300px;
     object-fit: cover;
     background-color: #f9f9f9; /* optional: shows behind letterboxing */
 }
-.voice-memo {
+.audio-memo {
     width: 100%;
-    margin: 15px 0;
+    margin: 10px 0 -8px 0;
 }
-.upload-btn {
+.audio-upload-btn {
     background: var(--primary);
     color: white;
     border: none;
@@ -109,25 +113,20 @@ h2 {
     margin-top: 10px;
     width: fit-content;
 }
-.memory-card {
+.memory-section {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     margin: 25px 0;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
-.memory-header {
+.memory-section-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
 }
 
-.memory-icon {
-    font-size: 1.5rem;
-}
-
-.photo-message {
+.memory-photo {
     width: 100%;
     max-height: 250px;
     object-fit: cover;

@@ -39,38 +39,37 @@ const handlePhotoUpload = (e) => {
         ))}
       </div>
 
-      <div className="product-display">
-        <h1>Our Gift Tells You a Story</h1>
-        <p className="product-meta">This souvenir is evidence that YOU survived a Georgian supra.</p>
+      <div className="title-display">
+        <h1>This Gift Sings You a Story</h1>
+        <p className="title-motto">This souvenir is evidence that YOU survived a Georgian supra.</p>
       </div>
 
-      <div className="memory-section">
-        <h2>The final song!… Click and enjoy!</h2>
+      <div className="audio-section">
+        <h2>Let me Play one Final Song!</h2>
         <img
           src="./Product Covers/Wine Heads.jpg"
-          alt="Memory from Georgia"
-          className="memory-photo"
+          alt="Product Images - Bottles of Wine with the Wine Clothes"
+          className="product-photo"
         />
-        <audio controls className="voice-memo">
-          <source src="./Audio Files/song-lola-hunter.mp3" type="audio/mpeg" />
+        <audio controls className="audio-memo">
+          <source src="./Audio Files/Sufruli-Gvinov-kakhuro.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <p>
+        <p className="audio-section-p">
           I was made by real hands, not factory machines. That is what made me witness of many gossips about you.
         </p>
       </div>
 
-      {/* Memory Photo Card */}
-      <div className="memory-card">
-        <div className="memory-header">
-          <div className="memory-icon">📸</div>
-          <h2>Blurry memories? Upload your best one!</h2>
+      {/* Memory Photo section */}
+      <div className="memory-section">
+        <div className="memory-section-header">
+          <h2>Upload Your Fav  Memory Photo!</h2>
         </div>
         <div className="memory-content">
           <img
             src={uploadedPhoto || "./Memory Sharing Photos/upload-product-img.png"}
             alt="User memory"
-            className="photo-message"
+            className="memory-photo"
           />
           <input
             type="file"
@@ -81,15 +80,14 @@ const handlePhotoUpload = (e) => {
           />
           <div className="location-marker">
             <span className="location-icon">📍</span>
-            <span>Kindzmarauli Winery, May 15, 2024</span>
+            <span>Tbilisi, Georgia. July 2025</span>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="footer">
-        <p>Tap any NFC-enabled phone to this tag to experience the memories</p>
-        <p>© 2024 Georgian Artisan Souvenirs</p>
+        <p>© 2025, Polypore Warriors</p>
       </div>
 
     </div>
