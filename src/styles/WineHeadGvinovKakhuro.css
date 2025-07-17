@@ -90,13 +90,36 @@ h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
-.product-photo {
-    width: 100%;
-    border-radius: 8px;
-    max-height: 300px;
-    object-fit: cover;
-    background-color: #f9f9f9; /* optional: shows behind letterboxing */
+
+.product-photo-wrapper {
+  position: relative;
+  display: inline-block;
 }
+
+.product-photo {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    background-color: #f9f9f9; 
+}
+
+.play-button-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    width: 62px; 
+    height: 62px;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+.play-button-overlay:hover {
+    transform: scale(1.2);
+}
+
 .audio-memo {
     width: 100%;
     margin: 10px 0 -8px 0;

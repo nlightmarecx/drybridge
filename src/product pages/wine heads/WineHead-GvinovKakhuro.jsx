@@ -1,5 +1,5 @@
 // src/pages/WineHeadGvinovKakhuro.jsx
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
 import translations from "../../data/translations";
 
@@ -17,6 +17,21 @@ const WineHeadGvinovKakhuro = () => {
     alert("In the full version, this would open audio recording/upload");
   };
 */
+
+const [isPlaying, setIsPlaying] = useState(false);
+const audioRef = useRef(null);
+
+const handlePlayPause = () => {
+  const audio = audioRef.current;
+  if (!audio) return;
+
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  setIsPlaying(!isPlaying);
+};
 
 const [uploadedPhoto, setUploadedPhoto] = useState(null);
 
@@ -50,12 +65,20 @@ const handlePhotoUpload = (e) => {
 
       <div className="audio-section">
         <h2>{t.audioTitle}</h2>
-        <img
-          src="./Product Covers/Wine Heads.jpg"
-          alt="Product Images - Bottles of Wine with the Wine Clothes"
-          className="product-photo"
-        />
-        <audio controls className="audio-memo">
+        <div className="product-photo-wrapper">
+          <img
+            src="./Product Covers/Wine Heads.jpg"
+            alt="Product Images - Bottles of Wine with the Wine Clothes"
+            className="product-photo"
+          />
+          <img
+            src={isPlaying ? "./Icons/speaker-on.png" : "./Icons/speaker-off.png"}
+            alt="Play Button"
+            className="play-button-overlay"
+            onClick={handlePlayPause}
+          />
+        </div>
+        <audio ref={audioRef} controls className="audio-memo" onEnded={() => setIsPlaying(false)}>
           <source src="./Audio Files/Sufruli-Gvinov-kakhuro.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
