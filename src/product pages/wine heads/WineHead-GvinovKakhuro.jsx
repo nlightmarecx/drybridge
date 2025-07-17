@@ -1,5 +1,5 @@
 // src/pages/WineHeadGvinovKakhuro.jsx
-import React, { useState, useRef} from "react";
+import React, { useState, useRef, useEffect} from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
 import translations from "../../data/translations";
 
@@ -31,7 +31,25 @@ const handlePlayPause = () => {
     audio.play();
   }
   setIsPlaying(!isPlaying);
+  if (!hasBeenClicked) {
+    setHasBeenClicked(true); 
+  }
 };
+
+const [hasBeenClicked, setHasBeenClicked] = useState(false);
+
+const [showMessage, setShowMessage] = useState(false);
+
+useEffect(() => {
+  if (!hasBeenClicked) {
+    const timer = setTimeout(() => {
+      setShowMessage(true);
+    }, 8600);
+
+    return () => clearTimeout(timer);
+  }
+}, [hasBeenClicked]);
+
 
 const [uploadedPhoto, setUploadedPhoto] = useState(null);
 
@@ -74,9 +92,12 @@ const handlePhotoUpload = (e) => {
           <img
             src={isPlaying ? "./Icons/speaker-on.png" : "./Icons/speaker-off.png"}
             alt="Play Button"
-            className="play-button-overlay"
+            className={`play-button-overlay ${!hasBeenClicked ? "bouncing" : ""}`}
             onClick={handlePlayPause}
           />
+          {showMessage && !hasBeenClicked && (
+            <p className="play-hint-text">{t.playhinttext}</p>
+          )}
         </div>
         <audio ref={audioRef} controls className="audio-memo" onEnded={() => setIsPlaying(false)}>
           <source src="./Audio Files/Sufruli-Gvinov-kakhuro.mp3" type="audio/mpeg" />

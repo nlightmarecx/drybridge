@@ -105,20 +105,66 @@ h2 {
     background-color: #f9f9f9; 
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceScale {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+.bouncing {
+  animation: bounceScale 1.8s infinite;
+}
+
 .play-button-overlay {
     position: absolute;
     bottom: 12px;
     left: 12px;
-    width: 62px; 
-    height: 62px;
+    width: 63px; 
+    height: 63px;
     cursor: pointer;
     z-index: 2;
-    transition: transform 0.2s ease;
+    transition: transform 0.1s ease;
 }
 
-.play-button-overlay:hover {
-    transform: scale(1.2);
+.play-button-overlay:active {
+  transform: scale(0.90);
 }
+
+.play-hint-text {
+  position: absolute;
+  bottom: 7px;
+  left: 79px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #8B0000;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 .audio-memo {
     width: 100%;
