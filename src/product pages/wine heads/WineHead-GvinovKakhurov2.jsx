@@ -10,7 +10,7 @@ const WineHeadGvinovKakhurov2 = () => {
     // Implement language switching logic here if needed
   };
 
-  const handleAudioUpload = () => {
+const handleAudioUpload = () => {
     alert("In the full version, this would open audio recording/upload");
   };
 
