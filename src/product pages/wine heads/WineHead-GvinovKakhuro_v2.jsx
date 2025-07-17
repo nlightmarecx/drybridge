@@ -1,8 +1,8 @@
-// src/pages/WineHeadGvinovKakhuro.jsx
+// src/pages/WineHeadGvinovKakhuro_v2.jsx
 import React, { useState } from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
 
-const WineHeadGvinovKakhuro = () => {
+const WineHeadGvinovKakhuro_v2 = () => {
   const [activeLang, setActiveLang] = useState("ENG");
 
   const handleLanguageSwitch = (lang) => {
@@ -24,7 +24,6 @@ const handlePhotoUpload = (e) => {
   }
 };
 
-// <--------- CONTENT AND HTML CODE --------->
   return (
     <div className="mobile-container wine-head-page">
       <div className="language-selector">
@@ -40,31 +39,46 @@ const handlePhotoUpload = (e) => {
       </div>
 
       <div className="product-display">
-        <h1>Our Gift Tells You a Story</h1>
-        <p className="product-meta">This souvenir is evidence that YOU survived a Georgian supra.</p>
+        <div className="video-wrapper">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/2cQP2gNFHcM?autoplay=1&mute=0&rel=0&modestbranding=1&showinfo=0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <h1>David's Wine Companion</h1>
+        <p className="product-meta">Handmade wool felt cover • Georgia</p>
       </div>
 
       <div className="memory-section">
-        <h2>The final song!… Click and enjoy!</h2>
+        <h2>David's Voice Message</h2>
         <img
           src="./Product Covers/Wine Heads.jpg"
           alt="Memory from Georgia"
           className="memory-photo"
         />
+        <p>
+          "This wine cover reminds me of our amazing tour through Kakheti's
+          vineyards. The Kindzmarauli winery was our favorite stop!"
+        </p>
         <audio controls className="voice-memo">
           <source src="./Audio Files/song-lola-hunter.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <p>
-          I was made by real hands, not factory machines. That is what made me witness of many gossips about you.
-        </p>
+        <button className="upload-btn" onClick={handleAudioUpload}>
+          Upload New Audio
+        </button>
       </div>
 
       {/* Memory Photo Card */}
       <div className="memory-card">
         <div className="memory-header">
           <div className="memory-icon">📸</div>
-          <h2>Blurry memories? Upload your best one!</h2>
+          <h2>Memory Photo</h2>
         </div>
         <div className="memory-content">
           <img
@@ -86,6 +100,26 @@ const handlePhotoUpload = (e) => {
         </div>
       </div>
 
+
+      {/* Product Story Card */}
+      <div className="memory-card">
+        <div className="memory-header">
+          <div className="memory-icon">🧵</div>
+          <h2>The Story Behind This Piece</h2>
+        </div>
+        <div className="memory-content">
+          <p>
+            This wine cover was hand-felted by Eteri in Telavi using traditional
+            Georgian wool-felting techniques passed down through three generations.
+            The patterns represent the Alazani Valley vineyards.
+          </p>
+          <div className="location-marker">
+            <span className="location-icon">📍</span>
+            <span>Made in Telavi, Georgia</span>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <div className="footer">
         <p>Tap any NFC-enabled phone to this tag to experience the memories</p>
@@ -96,4 +130,4 @@ const handlePhotoUpload = (e) => {
   );
 };
 
-export default WineHeadGvinovKakhuro;
+export default WineHeadGvinovKakhuro_v2;

@@ -18,6 +18,7 @@
     { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0007", name: "Wine Head 0007", notes: "25 GEL", route: "/winehead7" },
     { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-0008", name: "Wine Head 0008", notes: "25 GEL", route: "/winehead8"},
     { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-T0001", name: "WH-Gvinov Kakhuro", notes: "25 GEL", route: "/wineHead-gvinovkakhuro"},
+    { author: "Lia", category: "Wine Decor", subcategory: "Wine Head", productSize: "Small", productId: "LIA-202507-WFWH-T0002", name: "WH-Gvinov Kakhuro_v2", notes: "25 GEL", route: "/wineHead-gvinovkakhuro_v2"},
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0009", name: "Cheburashka", notes: "" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0010", name: "Winnie the Puh", notes: "" },
     { author: "Lia", category: "Wool Felted", subcategory: "Character", productSize: "Medium", productId: "LIA-202507-WF-0011", name: "Baba Yaga", notes: "150 GEL" },
