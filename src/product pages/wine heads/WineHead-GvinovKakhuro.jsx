@@ -1,14 +1,16 @@
 // src/pages/WineHeadGvinovKakhuro.jsx
 import React, { useState } from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
+import translations from "../../data/translations";
 
 const WineHeadGvinovKakhuro = () => {
   const [activeLang, setActiveLang] = useState("ENG");
 
   const handleLanguageSwitch = (lang) => {
     setActiveLang(lang);
-    // Implement language switching logic here if needed
   };
+ 
+  const t = translations[activeLang];
 
   const handleAudioUpload = () => {
     alert("In the full version, this would open audio recording/upload");
@@ -28,7 +30,7 @@ const handlePhotoUpload = (e) => {
   return (
     <div className="mobile-container wine-head-page">
       <div className="language-selector">
-        {["ENG", "GE", "RU"].map((lang) => (
+        {["GE", "ENG", "RU"].map((lang) => (
           <button
             key={lang}
             className={`language-btn ${activeLang === lang ? "active" : ""}`}
@@ -40,12 +42,12 @@ const handlePhotoUpload = (e) => {
       </div>
 
       <div className="title-display">
-        <h1>This Gift Sings You a Story</h1>
-        <p className="title-motto">This souvenir is evidence that YOU survived a Georgian supra.</p>
+        <h1>{t.title}</h1>
+        <p className="title-motto">{t.motto}</p>
       </div>
 
       <div className="audio-section">
-        <h2>Let me Play one Final Song!</h2>
+        <h2>{t.audioTitle}</h2>
         <img
           src="./Product Covers/Wine Heads.jpg"
           alt="Product Images - Bottles of Wine with the Wine Clothes"
@@ -56,14 +58,14 @@ const handlePhotoUpload = (e) => {
           Your browser does not support the audio element.
         </audio>
         <p className="audio-section-p">
-          I was made by real hands, not factory machines. That is what made me witness of many gossips about you.
+          {t.audioText}
         </p>
       </div>
 
       {/* Memory Photo section */}
       <div className="memory-section">
         <div className="memory-section-header">
-          <h2>Upload Your Fav  Memory Photo!</h2>
+          <h2>{t.uploadTitle}</h2>
         </div>
         <div className="memory-content">
           <img
@@ -80,14 +82,14 @@ const handlePhotoUpload = (e) => {
           />
           <div className="location-marker">
             <span className="location-icon">📍</span>
-            <span>Tbilisi, Georgia. July 2025</span>
+            <span>{t.location}</span>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="footer">
-        <p>© 2025, Polypore Warriors</p>
+        <p>{t.copyright}</p>
       </div>
 
     </div>
