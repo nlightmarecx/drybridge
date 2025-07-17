@@ -12,6 +12,7 @@ const WineHeadGvinovKakhuro = () => {
  
   const t = translations[activeLang];
 
+  //No Audio Upload for this moment, but will be needed in future
   const handleAudioUpload = () => {
     alert("In the full version, this would open audio recording/upload");
   };

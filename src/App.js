@@ -12,7 +12,7 @@ import WineHead6 from "./product pages/wine heads/WineHead0006";
 import WineHead7 from "./product pages/wine heads/WineHead0007";
 import WineHead8 from "./product pages/wine heads/WineHead0008";
 import WineHeadGvinovKakhuro from "./product pages/wine heads/WineHead-GvinovKakhuro";
-import WineHeadGvinovKakhuro_v2 from "./product pages/wine heads/WineHead-GvinovKakhuro_v2";
+import WineHeadGvinovKakhurov2 from "./product pages/wine heads/WineHead-GvinovKakhurov2";
 import ProductDisplay from "./product pages/ProductDisplay";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         <Route path="/winehead7" element={<WineHead7 />} />
         <Route path="/winehead8" element={<WineHead8 />} />
         <Route path="/winehead-gvinovkakhuro" element={<WineHeadGvinovKakhuro />} />
-        <Route path="/winehead-gvinovkakhuro_v2" element={<WineHeadGvinovKakhuro_v2 />} />
+        <Route path="/winehead-gvinovkakhurov2" element={<WineHeadGvinovKakhurov2 />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
         <Route path="/product/:productId" element={<ProductDisplay />} />
       </Routes>

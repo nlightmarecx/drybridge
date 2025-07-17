@@ -1,8 +1,8 @@
-// src/pages/WineHeadGvinovKakhuro_v2.jsx
+// src/pages/WineHeadGvinovKakhurov2.jsx
 import React, { useState } from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
 
-const WineHeadGvinovKakhuro_v2 = () => {
+const WineHeadGvinovKakhurov2 = () => {
   const [activeLang, setActiveLang] = useState("ENG");
 
   const handleLanguageSwitch = (lang) => {
@@ -123,4 +123,4 @@ const handlePhotoUpload = (e) => {
   );
 };
 
-export default WineHeadGvinovKakhuro_v2;
+export default WineHeadGvinovKakhurov2;
