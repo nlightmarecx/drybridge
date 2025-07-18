@@ -167,7 +167,6 @@ const handlePhotoUpload = (e) => {
           <input
             type="file"
             accept="image/*"
-            capture="environment"
             onChange={handlePhotoUpload}
             style={{ marginBottom: "10px" }}
           />
