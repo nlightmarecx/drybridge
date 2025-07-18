@@ -22,7 +22,7 @@ const songs = [
       GE: "ჩვენ ახლა ერთურთს",
       RU: "Chven Akhla Erturs"
     }
-  }
+  },
   {
     path: "./Audio Files/Georgian Folk Songs/Tu Ase Turpa iKavi.mp3",
     name: {
@@ -31,9 +31,7 @@ const songs = [
       RU: "Tu Ase Turpa Ikavi"
     }
   }
-
 ];
-
 
 
 export default songs;
