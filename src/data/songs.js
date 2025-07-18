@@ -16,13 +16,24 @@ const songs = [
     }
   },
   {
-    path: "./Audio Files/Georgian Folk Songs/toast-film-kharebadagogia-საქართველოს-სადღეგრძელო.mp3",
+    path: "./Audio Files/Georgian Folk Songs/Chven Akhla Erturs.mp3",
     name: {
-      ENG: "Toast - Kharebadagogia",
-      GE: "ტოსტი - ხარებადაგოგია",
-      RU: "Тост - Харебадагогия"
+      ENG: "Chven Akhla Erturs",
+      GE: "ჩვენ ახლა ერთურთს",
+      RU: "Chven Akhla Erturs"
     }
   }
+  {
+    path: "./Audio Files/Georgian Folk Songs/Tu Ase Turpa iKavi.mp3",
+    name: {
+      ENG: "Tu Ase Turpa Ikavi",
+      GE: "თუ ასე ტურფა იყავი",
+      RU: "Tu Ase Turpa Ikavi"
+    }
+  }
+
 ];
+
+
 
 export default songs;
