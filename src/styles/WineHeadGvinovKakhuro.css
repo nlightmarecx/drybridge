@@ -102,7 +102,6 @@ h2 {
     height: auto;
     display: block;
     object-fit: cover;
-    background-color: #f9f9f9; 
 }
 
 @keyframes pulse {
@@ -165,11 +164,19 @@ h2 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.song-title {
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0 -8px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
 
 .audio-memo {
     width: 100%;
     margin: 10px 0 -8px 0;
 }
+
 .audio-upload-btn {
     background: var(--primary);
     color: white;

@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect} from "react";
 import "../../styles/WineHeadGvinovKakhuro.css";
 import translations from "../../data/translations";
+import songs from "../../data/songs";
 
 const WineHeadGvinovKakhuro = () => {
   const [activeLang, setActiveLang] = useState("ENG");
@@ -20,6 +21,13 @@ const WineHeadGvinovKakhuro = () => {
 
 const [isPlaying, setIsPlaying] = useState(false);
 const audioRef = useRef(null);
+
+const [currentSong, setCurrentSong] = useState(null);
+
+useEffect(() => {
+  const randomSong = songs[Math.floor(Math.random() * songs.length)];
+  setCurrentSong(randomSong);
+}, []);
 
 const handlePlayPause = () => {
   const audio = audioRef.current;
@@ -61,6 +69,8 @@ const handlePhotoUpload = (e) => {
   }
 };
 
+
+
 // <--------- CONTENT AND HTML CODE --------->
   return (
     <div className="mobile-container wine-head-page">
@@ -83,11 +93,20 @@ const handlePhotoUpload = (e) => {
 
       <div className="audio-section">
         <h2>{t.audioTitle}</h2>
-        <div className="product-photo-wrapper">
-          <img
-            src="./Product Covers/Wine Heads.jpg"
-            alt="Product Images - Bottles of Wine with the Wine Clothes"
-            className="product-photo"
+          <div className="product-photo-wrapper"
+            style={{
+              backgroundImage: "url('/Product%20Covers/tbilisi-bg.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
+          >
+          <video
+              src="/Product Covers/Runwayml_Wine-Heads-Dancingv3.mp4"
+              className="product-photo"
+              autoPlay
+              loop
+              muted
+              playsInline
           />
           <img
             src={isPlaying ? "./Icons/speaker-on.png" : "./Icons/speaker-off.png"}
@@ -99,10 +118,23 @@ const handlePhotoUpload = (e) => {
             <p className="play-hint-text">{t.playhinttext}</p>
           )}
         </div>
-        <audio ref={audioRef} controls className="audio-memo" onEnded={() => setIsPlaying(false)}>
-          <source src="./Audio Files/Sufruli-Gvinov-kakhuro.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+        {currentSong && (
+          <>
+            <p className="song-title">
+              {currentSong.name[activeLang] || currentSong.name.ENG}
+            </p>
+            <audio 
+              ref={audioRef} 
+              controls 
+              className="audio-memo" 
+              onEnded={() => setIsPlaying(false)}
+              key={currentSong.path} // Force re-render when song changes
+            >
+              <source src={currentSong.path} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </>
+        )}
         <p className="audio-section-p">
           {t.audioText}
         </p>
