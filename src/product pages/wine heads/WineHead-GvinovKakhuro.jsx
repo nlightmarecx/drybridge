@@ -146,11 +146,24 @@ const handlePhotoUpload = (e) => {
           <h2>{t.uploadTitle}</h2>
         </div>
         <div className="memory-content">
-          <img
-            src={uploadedPhoto || "./Memory Sharing Photos/upload-product-img.png"}
-            alt="User memory"
-            className="memory-photo"
+          {/* Hidden file input */}
+          <input
+            id="memory-upload"
+            type="file"
+            accept="image/*"
+            onChange={handlePhotoUpload}
+            style={{ display: 'none' }}
           />
+          
+          {/* Clickable image that triggers the input */}
+          <label htmlFor="memory-upload">
+            <img
+              src={uploadedPhoto || "./Memory Sharing Photos/upload-product-img.png"}
+              alt="User memory"
+              className="memory-photo"
+              style={{ cursor: 'pointer' }}
+            />
+          </label>
           <input
             type="file"
             accept="image/*"
@@ -161,7 +174,7 @@ const handlePhotoUpload = (e) => {
           <div className="location-marker">
             <span className="location-icon">📍</span>
             <span>{t.location}</span>
-          </div>
+          </div>          
         </div>
       </div>
 
