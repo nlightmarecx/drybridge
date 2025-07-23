@@ -69,8 +69,6 @@ const handlePhotoUpload = (e) => {
   }
 };
 
-
-
 // <--------- CONTENT AND HTML CODE --------->
   return (
     <div className="mobile-container wine-head-page">
@@ -94,11 +92,6 @@ const handlePhotoUpload = (e) => {
       <div className="audio-section">
         <h2>{t.audioTitle}</h2>
           <div className="product-photo-wrapper"
-            style={{
-              backgroundImage: "url('/Product%20Covers/tbilisi-bg.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
           >
           <video
               src="/Product Covers/Runwayml_Wine-Heads-Dancingv3.mp4"
