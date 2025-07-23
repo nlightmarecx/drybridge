@@ -5,7 +5,7 @@ import translations from "../../data/translations";
 import songs from "../../data/songs";
 
 const WineHeadGvinovKakhuro = () => {
-  const [activeLang, setActiveLang] = useState("ENG");
+  const [activeLang, setActiveLang] = useState("GE");
 
   const handleLanguageSwitch = (lang) => {
     setActiveLang(lang);
@@ -21,6 +21,7 @@ const WineHeadGvinovKakhuro = () => {
 
 const [isPlaying, setIsPlaying] = useState(false);
 const audioRef = useRef(null);
+const toastAudioRef = useRef(null);    // NEW toast audio
 
 const [currentSong, setCurrentSong] = useState(null);
 
@@ -30,19 +31,30 @@ useEffect(() => {
 }, []);
 
 const handlePlayPause = () => {
-  const audio = audioRef.current;
-  if (!audio) return;
+  const songAudio = audioRef.current;
+  const toastAudio = toastAudioRef.current;
 
-  if (isPlaying) {
-    audio.pause();
-  } else {
-    audio.play();
+  if (!songAudio) return;
+
+  // Pause toast audio if it's playing
+  if (toastAudio && !toastAudio.paused) {
+    toastAudio.pause();
   }
+
+  // Toggle song audio
+  if (isPlaying) {
+    songAudio.pause();
+  } else {
+    songAudio.play();
+  }
+
   setIsPlaying(!isPlaying);
+
   if (!hasBeenClicked) {
-    setHasBeenClicked(true); 
+    setHasBeenClicked(true);
   }
 };
+
 
 const [hasBeenClicked, setHasBeenClicked] = useState(false);
 
@@ -73,7 +85,7 @@ const handlePhotoUpload = (e) => {
   return (
     <div className="mobile-container wine-head-page">
       <div className="language-selector">
-        {["GE", "ENG", "RU"].map((lang) => (
+        {["GE", "ENG"].map((lang) => (
           <button
             key={lang}
             className={`language-btn ${activeLang === lang ? "active" : ""}`}
@@ -139,7 +151,16 @@ const handlePhotoUpload = (e) => {
             <button
               className="toast-button"
               onClick={() => {
-                const toastAudio = document.getElementById("toastAudio");
+                const toastAudio = toastAudioRef.current;
+                const songAudio = audioRef.current;
+
+                // Pause song if it's playing
+                if (songAudio && !songAudio.paused) {
+                  songAudio.pause();
+                  setIsPlaying(false);
+                }
+
+                // Toggle toast audio
                 if (toastAudio.paused) {
                   toastAudio.play();
                 } else {
@@ -147,7 +168,7 @@ const handlePhotoUpload = (e) => {
                 }
               }}
             >
-              {t.toastPlay || "Tamada's Toast"}
+              {t.toastPlay || t.ToastTamada}
             </button>
 
             <button
@@ -156,10 +177,11 @@ const handlePhotoUpload = (e) => {
                 alert("Upload feature coming soon!");
               }}
             >
-              {t.toastUpload || "Upload Your Toast"}
+              {t.toastUpload || t.YourToast}
             </button>
 
             <audio
+              ref={toastAudioRef}
               id="toastAudio"
               className="toast-audio"
               controls
