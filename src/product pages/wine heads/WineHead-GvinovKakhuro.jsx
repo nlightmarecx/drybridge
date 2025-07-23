@@ -131,6 +131,45 @@ const handlePhotoUpload = (e) => {
         <p className="audio-section-p">
           {t.audioText}
         </p>
+      
+      {/* TOAST AUDIO SECTION */}
+      
+        <div className="toast-audio-section">
+          <div className="toast-audio-controls">
+            <button
+              className="toast-button"
+              onClick={() => {
+                const toastAudio = document.getElementById("toastAudio");
+                if (toastAudio.paused) {
+                  toastAudio.play();
+                } else {
+                  toastAudio.pause();
+                }
+              }}
+            >
+              {t.toastPlay || "Tamada's Toast"}
+            </button>
+
+            <button
+              className="toast-button upload"
+              onClick={() => {
+                alert("Upload feature coming soon!");
+              }}
+            >
+              {t.toastUpload || "Upload Your Toast"}
+            </button>
+
+            <audio
+              id="toastAudio"
+              className="toast-audio"
+              controls
+              preload="metadata"
+            >
+              <source src="/Audio Files/Georgian Toasts/ხარება და გოგია_საქართველოს-სადღეგრძელო.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
       </div>
 
       {/* Memory Photo section */}

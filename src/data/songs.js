@@ -3,7 +3,7 @@ const songs = [
     path: "./Audio Files/Georgian Folk Songs/Sufruli-Gvinov-kakhuro.mp3",
     name: {
       ENG: "Sufruli - Gvinov Kakhuro",
-      GE: "სუფრული - გვინოვ კახურო",
+      GE: "სუფრული - ღვინოვ კახურო",
       RU: "Суфрули - Гвинов Кахуро"
     }
   },
@@ -11,7 +11,7 @@ const songs = [
     path: "./Audio Files/Georgian Folk Songs/Opera ''Daisi''Gvinov Kaxuro.mp3",
     name: {
       ENG: "Opera 'Daisi' - Gvinov Kakhuro",
-      GE: "ოპერა 'დაისი' - გვინოვ კახურო",
+      GE: "ოპერა 'დაისი' - ღვინოვ კახურო",
       RU: "Опера 'Даиси' - Гвинов Кахуро"
     }
   },

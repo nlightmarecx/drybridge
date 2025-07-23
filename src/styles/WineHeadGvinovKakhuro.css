@@ -94,6 +94,7 @@ h2 {
 .product-photo-wrapper {
   position: relative;
   display: inline-block;
+  overflow: visible;
 }
 
 .product-photo {
@@ -124,7 +125,7 @@ h2 {
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-10px) scale(1.1);
+    transform: translateY(-10px) scale(1.15);
   }
 }
 
@@ -136,15 +137,15 @@ h2 {
     position: absolute;
     bottom: 12px;
     left: 12px;
-    width: 63px; 
-    height: 63px;
+    width: 70px; 
+    height: 70px;
     cursor: pointer;
     z-index: 2;
     transition: transform 0.1s ease;
 }
 
 .play-button-overlay:active {
-  transform: scale(0.90);
+  transform: scale(0.85);
 }
 
 .play-hint-text {
@@ -189,6 +190,70 @@ h2 {
     margin-top: 10px;
     width: fit-content;
 }
+
+.toast-audio-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.toast-audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.toast-button {
+  background-color: #88A67E;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  min-width: 120px;
+  text-align: center;
+  touch-action: manipulation;
+}
+
+.toast-button:active {
+  transform: scale(0.96);
+  background-color: #7B956E; 
+}
+
+.toast-button.upload {
+  background-color: #FCFAF7;
+  color: #444;
+  border: 1px solid #ddd;
+}
+
+.toast-button.upload:hover {
+  background-color: #f7e08c;
+}
+
+.toast-button.upload:active {
+  transform: scale(0.96);
+  background-color: #f1eee8; /* slightly darker linen */
+}
+
+.toast-audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.toast-audio {
+  height: 32px;
+  margin-left: 6px;
+}
+
 .memory-section {
     background: white;
     border-radius: 12px;
