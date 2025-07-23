@@ -24,6 +24,14 @@ const songs = [
     }
   },
   {
+    path: "./Audio Files/Georgian Folk Songs/Hamlet Gonashvili Tsintskharo.mp3",
+    name: {
+      ENG: "Hamlet Gonashvili Tsintskharo",
+      GE: "ჰამლეტ გონაშვილი წინწყარო",
+      RU: "Hamlet Gonashvili Tsintskharo"
+    }
+  },
+  {
     path: "./Audio Files/Georgian Folk Songs/Tu Ase Turpa iKavi.mp3",
     name: {
       ENG: "Tu Ase Turpa Ikavi",
