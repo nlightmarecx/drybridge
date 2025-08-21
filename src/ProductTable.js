@@ -105,6 +105,7 @@ function ProductTable() {
             <th>Subcategory</th>
             <th>Product Size</th>
             <th>Name</th>
+            <th>Views</th>
             <th>Product ID</th>
             <th>Notes</th>
           </tr>
@@ -122,6 +123,7 @@ function ProductTable() {
                   {product.name}
                 </Link>
               </td>
+              <td>{product.views}</td>
               <td>{product.productId}</td>
               <td>{product.notes}</td>
             </tr>
