@@ -1,16 +1,76 @@
 // src/ProductTable.js
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import rawProducts from "./data/productsdata"; 
+import { supabase } from "./lib/supabase";
 
 function ProductTable() {
-  const allAuthors = [...new Set(rawProducts.map(p => p.author))];
-  const allCategories = [...new Set(rawProducts.map(p => p.category))];
+  // Start with local data, then hydrate views from Supabase
+  const [products, setProducts] = useState(rawProducts);
+
+  // Load global view counts once
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await supabase
+        .from("product_views")
+        .select("route,views");
+      if (error) {
+        console.error(error);
+        return;
+      }
+      const map = Object.fromEntries(
+        (data || []).map(r => [r.route.toLowerCase(), r.views])
+      );
+      setProducts(prev =>
+        prev.map(p => {
+          const key = (p.route || "").toLowerCase();
+          const v = map[key];
+          return v != null ? { ...p, views: v } : p;
+        })
+      );
+    })();
+  }, []);
+
+   // (Optional) realtime updates — uncomment if you want live refresh
+   useEffect(() => {
+     const ch = supabase
+       .channel("views")
+       .on(
+         "postgres_changes",
+         { event: "*", schema: "public", table: "product_views" },
+         payload => {
+           const row = payload.new || payload.old;
+           if (!row?.route) return;
+           const key = row.route.toLowerCase();
+           setProducts(prev =>
+             prev.map(p =>
+               (p.route || "").toLowerCase() === key ? { ...p, views: row.views } : p
+             )
+           );
+         }
+       )
+       .subscribe();
+      return () => supabase.removeChannel(ch);
+  }, []);  
+  
+  // Build filters from current products (so they reflect supabase-hydrated data)
+  const allAuthors = useMemo(
+    () => [...new Set(products.map(p => p.author))],
+    [products]
+  );
+  const allCategories = useMemo(
+    () => [...new Set(products.map(p => p.category))],
+    [products]
+  );
 
   const [selectedAuthors, setSelectedAuthors] = useState(new Set(allAuthors));
   const [selectedCategories, setSelectedCategories] = useState(new Set(allCategories));
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+
+  // Keep initial selections in sync when lists change
+  useEffect(() => { setSelectedAuthors(new Set(allAuthors)); }, [allAuthors]);
+  useEffect(() => { setSelectedCategories(new Set(allCategories)); }, [allCategories]);
 
   const toggleSet = (setFn, value) => {
     setFn(prev => {
@@ -21,7 +81,7 @@ function ProductTable() {
   };
 
   const filteredProducts = useMemo(() => {
-    let filtered = rawProducts.filter(
+    let filtered = products.filter(
       p => selectedAuthors.has(p.author) && selectedCategories.has(p.category)
     );
 
@@ -36,7 +96,7 @@ function ProductTable() {
     }
 
     return filtered;
-  }, [selectedAuthors, selectedCategories, sortConfig]);
+  }, [products, selectedAuthors, selectedCategories, sortConfig]);
 
   const onSort = (columnKey) => {
     setSortConfig(prev => {
@@ -123,7 +183,7 @@ function ProductTable() {
                   {product.name}
                 </Link>
               </td>
-              <td>{product.views}</td>
+              <td>{product.views ?? 0}</td>
               <td>{product.productId}</td>
               <td>{product.notes}</td>
             </tr>
