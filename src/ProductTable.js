@@ -3,58 +3,11 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import rawProducts from "./data/productsdata"; 
-import { supabase } from "./lib/supabase";
 
 function ProductTable() {
-  // Start with local data, then hydrate views from Supabase
-  const [products, setProducts] = useState(rawProducts);
+  const [products] = useState(rawProducts);
 
-  // Load global view counts once
-  useEffect(() => {
-    (async () => {
-      const { data, error } = await supabase
-        .from("product_views")
-        .select("route,views");
-      if (error) {
-        console.error(error);
-        return;
-      }
-      const map = Object.fromEntries(
-        (data || []).map(r => [r.route.toLowerCase(), r.views])
-      );
-      setProducts(prev =>
-        prev.map(p => {
-          const key = (p.route || "").toLowerCase();
-          const v = map[key];
-          return v != null ? { ...p, views: v } : p;
-        })
-      );
-    })();
-  }, []);
-
-   // (Optional) realtime updates — uncomment if you want live refresh
-   useEffect(() => {
-     const ch = supabase
-       .channel("views")
-       .on(
-         "postgres_changes",
-         { event: "*", schema: "public", table: "product_views" },
-         payload => {
-           const row = payload.new || payload.old;
-           if (!row?.route) return;
-           const key = row.route.toLowerCase();
-           setProducts(prev =>
-             prev.map(p =>
-               (p.route || "").toLowerCase() === key ? { ...p, views: row.views } : p
-             )
-           );
-         }
-       )
-       .subscribe();
-      return () => supabase.removeChannel(ch);
-  }, []);  
-  
-  // Build filters from current products (so they reflect supabase-hydrated data)
+  // Build filters from current products
   const allAuthors = useMemo(
     () => [...new Set(products.map(p => p.author))],
     [products]
